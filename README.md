@@ -105,3 +105,18 @@ a{
 }    
 ```
 理论第一行代码就ok了，将tap情况的高亮色给设置成透明色
+
+### 移动端禁止长按进行复制粘贴
+```
+*{
+	-webkit-touch-callout:none; /系统默认菜单被禁用/
+	-webkit-user-select:none; /webkit浏览器/
+	-moz-user-select:none;/火狐/
+	-ms-user-select:none; /IE10/
+	user-select:none;
+}
+// 但是这么搞，IOS会有问题。IOS输入框自动失去焦点无法输入内容。得加入如下的玩意
+input , textarea{
+	-webkit-user-select:auto;
+}
+```
