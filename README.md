@@ -15,9 +15,7 @@ input:-internal-autofill-selected {
 }
 ```
 
-###  解决方案：
-
-#### ①对整个表单或者某个input表格关闭自动填充功能
+#### ① 对整个表单或者某个input表格关闭自动填充功能
 
 
 ```
@@ -25,7 +23,7 @@ input:-internal-autofill-selected {
 <input type="text" autocomplete="off">
 ```
 
-#### ②给这个input添加阴影
+#### ② 给这个input添加阴影
 
 原理利用input阴影直接覆盖Google添加背景色之上
 
@@ -35,7 +33,7 @@ input:-internal-autofill-selected {
 ```
 说明一下，貌似只能用纯色。用rgba制式，浏览器依旧按照rgb颜色进行解析
 
-### ③利用动画关键帧解决
+#### ③ 利用动画关键帧解决
 
 ```
 @-webkit-keyframes autofill {
@@ -82,3 +80,28 @@ justify-content: center;
 #### ④ 粗暴解决流
 
 给多行文本包裹一个DIv，然后然后让这个div垂直居中
+
+### css文本处理
+`text-indent` 控制文本缩进
+
+`letter-spacing`  用来控制文字之间的间隔
+
+有趣的是，如果单独使用letter-spacing，会导致css另外一个属性
+`text-align：center` 出现问题了，这个就需要text-indent写上相同的值，来纠正一下`letter-spacing`导致的bug。
+例如：
+```
+text-align: center;
+text-indent: px2rem(100);
+letter-spacing: px2rem(100);
+```
+
+### 移动端a标签去除默认淡蓝色阴影
+移动端我们在点击页面中的一些图片的时候会出现阴影。处理方法只要给a标签加上
+```
+a{
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}    
+```
+理论第一行代码就ok了，将tap情况的高亮色给设置成透明色
