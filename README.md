@@ -136,3 +136,7 @@ display: -webkit-box;
 -webkit-line-clamp: 3;
 overflow: hidden;
 ```
+### flex不能自动撑开父盒子
+需求： 想利用flex横着排列，将父盒子的宽度给撑开. 但是父盒子总是自动调整子盒子宽度。
+
+给子盒子添加: `flex-shrink: 0`, 子盒子就不会受父盒子影响, `flex-shrink`默认值是`1`
